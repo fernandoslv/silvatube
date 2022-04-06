@@ -1,18 +1,40 @@
-<template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+<template>  
+  <router-view />
 </template>
 
+<script>
+import { mapState } from "vuex";
+
+export default {
+  created() {
+    
+  },
+  computed: mapState(["listVideos"]),
+};
+</script>
+
+
 <style lang="scss">
+*{
+  margin: 0;  
+  padding: 0;
+  border: 0; 
+  box-sizing: border-box;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #fff;
+  position: fixed;
+  top: 0;  
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(45deg, rgb(0, 0, 0), rgb(0, 53, 4), rgb(0, 0, 0));
+  padding: 50px 0;
 }
 
 nav {
