@@ -1,5 +1,8 @@
-const urlApiYoutube = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&key=AIzaSyD_EUrXqY0B-DG3etiabM52v11vVQNxN7E&type=video&order=relevance&q=';
-const urlVagalume = 'https://api.vagalume.com.br/search.art?apikey=660a4395f992ff67786584e238f501aa&limit=10&q='
+
+const ApiKeyYoutube = process.env.VUE_APP_KEY_YOUTUBE;
+const ApiKeyVagalume = process.env.VUE_APP_KEY_VAGALUME;
+const urlApiYoutube = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&key=${ApiKeyYoutube}&type=video&order=relevance&q='`;
+const urlVagalume = `https://api.vagalume.com.br/search.art?apikey=${ApiKeyVagalume}&limit=10&q=`;
 
 import { createStore } from 'vuex'
 
