@@ -1,26 +1,28 @@
 <template>
   <div class="search">
     <NameApp />
-    <div class="form-search">
+    <div class="search-form">
       <form @submit.prevent="onSubmit">
         <input
           v-model="inputSearchHome"
           @keyup="sugestoesVagalume"
+          @blur="cleanSugestoes"
           type="text"
           placeholder="Pesquise bandas e artistas favoritos..."
         />
       </form>
-      <div class="sugestoes-search">
+      <div class="search-sugestoes">
         <div
-          class="sugestoes-search-item"
+          class="search-sugestoes-item"
           v-for="item in listSugestoesVagalume?.response.docs"
           :key="item.id"
+          @click="getSugestao(item.band)"
         >
-          <div @click="getSugestao(item.band)">{{ item.band }}</div>
+          {{ item.band }}
         </div>
       </div>
     </div>
-    <div class="msg-search" v-if="inputSearch">
+    <div class="search-msg" v-if="inputSearch">
       Resultados da busca para "{{ inputSearch }}" no Youtube.
     </div>
   </div>
@@ -63,29 +65,37 @@ export default {
 .search {
   display: flex;
   flex-direction: column;
-  .form-search {
+  justify-content: center;
+  .search-form {
     padding: 10px 0;
+    display: flex;
+    flex-direction: column;    
+    justify-content: center;
+    min-width: 500px;
+    max-width: 500px;    
     input {
-      height: 40px;
-      width: 50%;
+      height: 40px;      
       border-radius: 4px;
       padding: 0 15px;
-      font-size: 1rem;
+      font-size: 1rem;      
+      width: 100%;
     }
-    .sugestoes-search {
-      position: absolute;
+    .search-sugestoes {      
       background-color: rgba(255,255,255,.9);      
       margin: 0 auto;
-      text-align: center;
-      .sugestoes-search-item {
-        padding: 10px 0;
+      text-align: center;      
+      width: 100%;
+      .search-sugestoes-item {
+        padding: 10px 20px;
         border-bottom: 1px solid #999;
         color: #444;
-        text-align: left;        
+        text-align: left;   
+        cursor: pointer;
+        width: 100%;
       }
     }
   }
-  .msg-search {
+  .search-msg {
     padding: 20px;
     font-style: italic;
     font-size: .9rem;
