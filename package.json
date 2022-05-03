@@ -7,13 +7,15 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "bdd": "./node_modules/.bin/cypress run -b chrome",
+    "cypress:open": "node ./node_modules./bin/cypress open"
   },
   "dependencies": {
+    "bootstrap": "^5.1.3",
     "core-js": "^3.8.3",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
-    "vue-tailwind": "^2.5.0",
     "vuex": "^4.0.0"
   },
   "devDependencies": {

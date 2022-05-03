@@ -1,7 +1,6 @@
-<template>
-  <div class="search">
-    <NameApp />
-    <div class="search-form">
+<template>  
+  <div class="search">    
+    <div class="search__form">
       <form @submit.prevent="onSubmit">
         <input
           v-model="inputSearchHome"
@@ -9,18 +8,20 @@
           @blur="cleanSugestoes"
           type="text"
           placeholder="Pesquise bandas e artistas favoritos..."
+          class="form-control"
+          list="datalistOptions"
         />
       </form>
-      <div class="search-sugestoes">
-        <div
+      <datalist id="datalistOptions" class="search__sugestoes">
+        <option
           class="search-sugestoes-item"
           v-for="item in listSugestoesVagalume?.response.docs"
           :key="item.id"
           @click="getSugestao(item.band)"
         >
           {{ item.band }}
-        </div>
-      </div>
+        </option>
+      </datalist>
     </div>
     <div class="search-msg" v-if="inputSearch">
       Resultados da busca para "{{ inputSearch }}" no Youtube.
@@ -30,10 +31,8 @@
 
 <script>
 import { mapState } from "vuex";
-import NameApp from "@/components/NameApp.vue";
 
 export default {
-  components: { NameApp },
   name: "FormSearch",
   data() {
     return {
@@ -63,33 +62,25 @@ export default {
 
 <style lang="scss">
 .search {
-  display: flex;
-  flex-direction: column;
+  display: flex;  
   justify-content: center;
-  .search-form {
+  .search__form {
     padding: 10px 0;
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
     justify-content: center;
-    min-width: 500px;
-    max-width: 500px;    
-    input {
-      height: 40px;      
-      border-radius: 4px;
-      padding: 0 15px;
-      font-size: 1rem;      
-      width: 100%;
-    }
-    .search-sugestoes {      
-      background-color: rgba(255,255,255,.9);      
+    width: 90%;
+    max-width: 600px;    
+    .search__sugestoes {
+      background-color: rgba(255, 255, 255, 0.9);
       margin: 0 auto;
-      text-align: center;      
+      text-align: center;
       width: 100%;
       .search-sugestoes-item {
         padding: 10px 20px;
         border-bottom: 1px solid #999;
         color: #444;
-        text-align: left;   
+        text-align: left;
         cursor: pointer;
         width: 100%;
       }
@@ -98,9 +89,9 @@ export default {
   .search-msg {
     padding: 20px;
     font-style: italic;
-    font-size: .9rem;
+    font-size: 0.9rem;
     color: #eee;
     text-align: left;
   }
 }
-</style>
+</style>px

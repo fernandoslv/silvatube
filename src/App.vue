@@ -1,11 +1,14 @@
-<template>  
+<template>
+<HeaderApp/>
   <router-view />
 </template>
 
 <script>
 import { mapState } from "vuex";
+import HeaderApp from "@/components/HeaderApp.vue";
 
 export default {
+  components: { HeaderApp },
   created() {
     
   },
@@ -33,7 +36,11 @@ export default {
   bottom: 0;
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(45deg, rgb(0, 0, 0), rgb(0, 53, 4), rgb(0, 0, 0));
+  background-image: url(./assets/bg.jpg);  
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-attachment: fixed;
+  background-size: cover;
   padding: 50px 0;
 }
 
