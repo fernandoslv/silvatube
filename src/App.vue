@@ -1,14 +1,11 @@
 <template>
-<HeaderApp/>
   <router-view />
 </template>
 
 <script>
 import { mapState } from "vuex";
-import HeaderApp from "@/components/HeaderApp.vue";
 
-export default {
-  components: { HeaderApp },
+export default {  
   created() {
     
   },
@@ -34,14 +31,17 @@ export default {
   position: fixed;
   top: 0;  
   bottom: 0;
-  height: 100%;
+  height: 100vh;
+  overflow-y: auto;
   width: 100%;
   background-image: url(./assets/bg.jpg);  
   background-repeat: no-repeat;
   background-position: left top;
   background-attachment: fixed;
   background-size: cover;
-  padding: 50px 0;
+  padding: 50px 0 0 0;
+  display: flex;
+  flex-direction: column;
 }
 
 nav {

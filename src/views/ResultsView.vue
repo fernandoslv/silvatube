@@ -1,8 +1,6 @@
-<template>
-  <div>
+<template>  
     <FormSearch/>
-    <ListVideos/>
-  </div>
+    <ListVideos/>  
 </template>
 
 <script>

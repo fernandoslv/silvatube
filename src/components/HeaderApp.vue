@@ -11,6 +11,7 @@ export default {
 
 <style lang="scss">
 .header {
+  width: 100%;
   .header__title {
     font-size: 2.5rem;    
   }

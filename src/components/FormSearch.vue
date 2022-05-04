@@ -1,5 +1,6 @@
-<template>  
-  <div class="search">    
+<template>
+  <div class="search">
+    <HeaderApp />
     <div class="search__form">
       <form @submit.prevent="onSubmit">
         <input
@@ -8,13 +9,13 @@
           @blur="cleanSugestoes"
           type="text"
           placeholder="Pesquise bandas e artistas favoritos..."
-          class="form-control"
+          class="form-control search__input"
           list="datalistOptions"
         />
       </form>
       <datalist id="datalistOptions" class="search__sugestoes">
         <option
-          class="search-sugestoes-item"
+          class="sugestoes__item"
           v-for="item in listSugestoesVagalume?.response.docs"
           :key="item.id"
           @click="getSugestao(item.band)"
@@ -23,7 +24,7 @@
         </option>
       </datalist>
     </div>
-    <div class="search-msg" v-if="inputSearch">
+    <div class="search__msg" v-if="inputSearch">
       Resultados da busca para "{{ inputSearch }}" no Youtube.
     </div>
   </div>
@@ -31,9 +32,11 @@
 
 <script>
 import { mapState } from "vuex";
+import HeaderApp from "@/components/HeaderApp.vue";
 
 export default {
   name: "FormSearch",
+  components: { HeaderApp },
   data() {
     return {
       inputSearchHome: "",
@@ -62,21 +65,27 @@ export default {
 
 <style lang="scss">
 .search {
-  display: flex;  
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   .search__form {
     padding: 10px 0;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 90%;
-    max-width: 600px;    
+    max-width: 600px;
+    .search__input {
+      height: 50px;
+    }
     .search__sugestoes {
       background-color: rgba(255, 255, 255, 0.9);
       margin: 0 auto;
       text-align: center;
       width: 100%;
-      .search-sugestoes-item {
+      .sugestoes__item {
         padding: 10px 20px;
         border-bottom: 1px solid #999;
         color: #444;
@@ -86,12 +95,12 @@ export default {
       }
     }
   }
-  .search-msg {
-    padding: 20px;
-    font-style: italic;
-    font-size: 0.9rem;
-    color: #eee;
-    text-align: left;
-  }
+    .search__msg {
+      padding: 20px;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: #eee;
+      text-align: left;
+    }
 }
 </style>px
